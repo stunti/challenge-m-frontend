@@ -1,0 +1,16 @@
+<div class="loading" *ngIf="isLoading && data.length == 0; else emptyBlock">
+	Loading
+</div>
+<ng-template #emptyBlock>
+	<div class="empty" *ngIf="data.length == 0; else tableBlock">
+		There is no data.
+	</div>
+</ng-template>
+<ng-template #tableBlock>
+	<table class="table-display">
+		<tr *ngFor="let item of data; index as i">
+			<td>{{item.name}}</td>
+			<td>{{item.visits}}</td>
+		</tr>
+	</table>
+</ng-template>

@@ -1,0 +1,1 @@
+export default function sprintf(strings: TemplateStringsArray, ...indices: number[]): (...values: string[]) => string;

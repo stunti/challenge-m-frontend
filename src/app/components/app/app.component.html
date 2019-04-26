@@ -1,0 +1,15 @@
+
+	<div>
+		<label>
+			Start date:
+			<input type="date" [formControl]="startDate">
+		</label>
+
+		<label>
+				End date:
+				<input type="date" [formControl]="endDate">
+		</label>
+	</div>
+	<div>
+		<app-table [startDate]="startDate.value" [endDate]="endDate.value"></app-table>
+	</div>
