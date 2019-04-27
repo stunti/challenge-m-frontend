@@ -8,9 +8,17 @@
 </ng-template>
 <ng-template #tableBlock>
 	<table class="table-display">
-		<tr *ngFor="let item of data; index as i">
-			<td>{{item.name}}</td>
-			<td>{{item.visits}}</td>
+		<thead>
+		<tr>
+			<th>Name</th>
+			<th>Visits</th>
 		</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let item of data; index as i">
+				<td>{{item.name}}</td>
+				<td>{{item.visits}}</td>
+			</tr>
+		</tbody>
 	</table>
 </ng-template>
