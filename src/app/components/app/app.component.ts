@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { AuthenticationService } from 'src/app/shared/services/authentication.service';
+import { Router } from '@angular/router';
+import { User } from 'src/app/shared/models/user';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +11,19 @@ import { FormControl } from '@angular/forms';
 })
 export class AppComponent {
 	title = 'frontend3';
-	
-	startDate = new FormControl('');
-	endDate = new FormControl('');
 
-		
+  currentUser: User;
+
+  constructor(
+      private router: Router,
+      private authenticationService: AuthenticationService
+  ) {
+      this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+  }
+
+  logout() {
+      //this.authenticationService.logout();
+      this.router.navigate(['/login']);
+  }
+
 }

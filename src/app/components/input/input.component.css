@@ -1,0 +1,11 @@
+
+/* Style inputs, select elements and textareas */
+
+.logout {
+    color: red;
+    cursor: pointer;
+}
+.container {
+	display:flex;
+    justify-content: center;
+}

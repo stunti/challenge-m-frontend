@@ -1,24 +1,35 @@
-<div class="loading" *ngIf="isLoading && data.length == 0; else emptyBlock">
-	Loading
-</div>
-<ng-template #emptyBlock>
-	<div class="empty" *ngIf="data.length == 0; else tableBlock">
-		There is no data.
-	</div>
-</ng-template>
-<ng-template #tableBlock>
+<div class="container">
 	<table class="table-display">
 		<thead>
 		<tr>
 			<th>Name</th>
-			<th>Visits</th>
+			<th class="num">Visits</th>
 		</tr>
 		</thead>
-		<tbody>
-			<tr *ngFor="let item of data; index as i">
-				<td>{{item.name}}</td>
-				<td>{{item.visits}}</td>
+
+		<tbody class="loading" *ngIf="isLoading && data.length == 0; else emptyBlock">
+			<tr>
+				<td colspan="2">Loading...</td>
 			</tr>
 		</tbody>
+
+		<ng-template #emptyBlock>
+			<tbody class="empty" *ngIf="data.length == 0; else tableBlock">
+				<tr>
+					<td colspan="2">There is no data.</td>
+				</tr>
+			</tbody>
+		</ng-template>
+
+		<ng-template #tableBlock>
+			<tbody>
+				<tr *ngFor="let item of data; index as i">
+					<td>{{item.name}}</td>
+					<td class="num">
+						{{item.visits | number:'1.0-0'}}
+					</td>
+				</tr>
+			</tbody>
+		</ng-template>
 	</table>
-</ng-template>
+</div>

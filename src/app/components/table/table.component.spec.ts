@@ -1,10 +1,11 @@
-import { async, ComponentFixture, TestBed, getTestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, getTestBed, tick, fakeAsync } from '@angular/core/testing';
 
 import { TableComponent } from './table.component';
 import { By } from '@angular/platform-browser';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { WebsiteService } from 'src/app/shared/services/website.service';
 import { WebsiteMockService } from 'src/app/shared/services/website.service.mock';
+
 
 describe('TableComponent', () => {
   let component: TableComponent;
@@ -33,8 +34,8 @@ describe('TableComponent', () => {
 
   beforeEach(() => {
     fixture = TestBed.createComponent(TableComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+		fixture.detectChanges();
+		component = fixture.componentInstance;
   });
 
   it('should create', () => {
@@ -47,16 +48,15 @@ describe('TableComponent', () => {
 		
 		component.ngOnChanges();
 
-		fixture.whenStable().then(() => {
-			// after something in the component changes, you should detect changes
+		setTimeout(() => { 
 			fixture.detectChanges();
-			expect(component.data.length).toEqual(5);
+			expect(component.data.length).toEqual(5); 
 
-			// everything else in the beforeEach needs to be done here.
 			const debugTaskTitle = fixture.debugElement.queryAll(By.css('table.table-display tr'));
 			
 			expect(debugTaskTitle.length).toEqual(5);
-		});
+		}, 1000);
+
 
 	});
 
@@ -70,21 +70,17 @@ describe('TableComponent', () => {
 		component.ngOnChanges();
 		fixture.detectChanges();
 		const debugTaskTitle = fixture.debugElement.queryAll(By.css('.empty'));
-		console.log(debugTaskTitle);
 		expect(debugTaskTitle.length).toEqual(1); 
 
 	});
 	
  
 	it('should display a loading state', () => {
-		// component.startDate = '2018-01-01';
-		// component.endDate = '2018-02-01';
 		service.options['TEST_LOADING_INDEFINITELY'] = true;  
 
 		component.ngOnChanges();
 		fixture.detectChanges();
 		const debugTaskTitle = fixture.debugElement.queryAll(By.css('.loading'));
-		console.log(debugTaskTitle);
 		expect(debugTaskTitle.length).toEqual(1);
 
 	});

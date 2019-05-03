@@ -3,6 +3,7 @@ import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Component, Input } from '@angular/core';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 
 @Component({
@@ -29,7 +30,8 @@ describe('AppComponent', () => {
 				MockTableComponent,
 			],
 			imports: [
-				ReactiveFormsModule,
+        ReactiveFormsModule,
+        RouterTestingModule,
 				HttpClientTestingModule, 
 			],
 		}).compileComponents();
