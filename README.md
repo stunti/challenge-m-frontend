@@ -1,27 +1,25 @@
-# Frontend3
+# M Challenge frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
 
-## Development server
+## Purpose
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Frontend code for the M challenge. 
+The application can be found at: http://134.209.101.26
 
-## Code scaffolding
+*Caveats* : The password are transfered and stored in plain text for the purpose of this challenge as it deserve a lot of test to ensure encryption and storage are secure in a real environment.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Technical description
 
-## Build
+The frontend is basedon Angular 7 and is entirely created in TypeScript.
+The code is scaffolded in 2 separate parts. 
+Shared services and components as well as individual components.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
+## Deployment
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Deployment can be done using automation websites or tools. Experiments have been made with CircleCI. As it is only static assets it could be deployed on AWS s# and frontend by Cloudfront or any other CDN to speed content delivery.
 
-## Running end-to-end tests
+## Additional enhancements
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+- Add tracking id from the client to track request end to end for debugging.
+- Add more secure ways to login/register (OAuth, Webauthn, ...)
